@@ -1,0 +1,214 @@
+﻿@page "/thongtintaikhoan"
+
+@layout CMS.WebAssembly.Layout.Admin.AdminLayout
+@using System.ComponentModel.DataAnnotations
+@using CMS.Shared.DTOs.User.Request
+@using CMS.Shared.DTOs.User.Response
+@using CMS.WEB.Common
+@using KLPVN.Core.Helper
+@using KLPVN.Core.Models
+
+<style>
+    .mud-main-content {
+        margin-top: 40px !important
+    }
+
+    .mud-badge.mud-badge-top.right.mud-badge-overlap {
+        inset: auto auto calc(100% - 20px) calc(100% - 20px);
+    }
+</style>
+<PageTitle>Thông tin tài khoản</PageTitle>
+@if (!_isReadyPage)
+{
+    <p>Loading... </p>
+}
+else{
+    <MudGrid Class="md-8 px-0 ma-0 mb-4" Spacing="2" Style="width:100%" Justify="Justify.Center">
+        <MudItem xs="12" sm="8" md="6" lg="4">
+            <MudPaper Elevation="0" Class="pa-2 rounded-3">
+                <div class="d-flex justify-content-center align-items-center mb-2" style="width: 100%; height: auto;">
+                    <MudBadge Color="Color.Success" Overlap="true" Bordered="true">
+                        <MudAvatar Style="width:100px; height:100px">
+                            <MudImage Class="center-image" Style="width:100%; height: auto" Src= "@Input.Avatar" Alt="Icon"/>
+                        </MudAvatar>
+                    </MudBadge>
+                </div>
+                <MudForm @ref="form" Model="Input">
+                    <div class="d-flex justify-content-center align-items-center mb-2" style="width: 100%; height: auto;">
+                        <MudFileUpload Accept="image/png, image/jpeg" Disabled="isDisable" T="IBrowserFile" FilesChanged="UploadFiles">
+                            <ActivatorContent>
+                                <MudFab Color="Color.Secondary"
+                                        StartIcon="@Icons.Material.Filled.Image"
+                                        Label="Chọn ảnh" Style="text-transform: none"/>
+                            </ActivatorContent>
+                        </MudFileUpload>
+                    </div>
+                    <MudTextField Class="mb-4" Disabled="@isDisable" @bind-Value="Input.FullName" For="(() => Input.FullName)" Required Variant="Variant.Outlined" Margin="Margin.Dense" Label="Họ tên"></MudTextField>
+                    <MudRadioGroup @bind-Value="Input.Gender" Disabled="@isDisable">
+                        <MudRadio Value="@(true)">Nam</MudRadio>
+                        <MudRadio Value="@(false)">Nữ</MudRadio>
+                    </MudRadioGroup>
+                    <MudTextField Class="mb-4" Disabled="@isDisable" @bind-Value="Input.Email" For="(() => Input.Email)" Variant="Variant.Outlined" Margin="Margin.Dense" Label="Email"></MudTextField>
+                    <MudTextField Class="mb-4" Disabled="@isDisable" @bind-Value="Input.PhoneNumber" For="(() => Input.PhoneNumber)" Required Variant="Variant.Outlined" Margin="Margin.Dense" Label="Số điện thoại"></MudTextField>
+                    <MudTextField Class="mb-4" Disabled="@isDisable" @bind-Value="Input.Address" For="(() => Input.Address)" Required Variant="Variant.Outlined" Margin="Margin.Dense" Label="Địa chỉ"></MudTextField>
+                    @if (isDisable)
+                    {
+                        <MudButton Style="text-transform:none"  Color="Color.Primary" Variant="Variant.Filled" OnClick="CapNhat">Cập nhập</MudButton>
+                    }
+                    else
+                    {
+                        <MudButton Style="text-transform:none" OnClick="SaveProfile"  Color="Color.Primary" Variant="Variant.Filled" ButtonType="ButtonType.Submit">Hoàn tất</MudButton>
+                    }
+                </MudForm>
+            </MudPaper>
+        </MudItem>
+    </MudGrid>
+}
+
+@code {
+    private bool _isReadyPage = false;
+    [SupplyParameterFromForm] 
+    private InputModel Input { get; set; }
+    private MudForm form;
+    public bool isDisable = true;
+
+    public void CapNhat()
+    {
+        isDisable = false;
+    }
+
+    private async Task UploadFiles(IBrowserFile file)
+    {
+        var pesignedURLHttpMessage = await Client.SendAsync(HttpMethod.GET,
+            ConstRequestUri.AuUploadFile, null, true);
+        if (pesignedURLHttpMessage is null)
+        {
+            return;
+        }
+
+        if (pesignedURLHttpMessage.IsSuccessStatusCode)
+        {
+            var pesignedUrl = await pesignedURLHttpMessage.Content.ReadAsStringAsync();
+
+            var sendCloudinaryMessage = await CloudHelper.UploadFileAsync(pesignedUrl, file);
+            if (!sendCloudinaryMessage.IsSuccess)
+            {
+                Snack.Add(sendCloudinaryMessage.Data, Severity.Warning);
+            }
+            else
+            {
+                var urlImage = sendCloudinaryMessage.Data;
+                var uploadAvatarParameter = $"{ConstRequestUri.UserUploadAvatar}?avatarUrl={urlImage}";
+                var uploadImages = await Client.SendAsync(
+                    HttpMethod.PUT, uploadAvatarParameter,null, true
+                );
+                if (uploadImages is null)
+                {
+                    return;
+                }
+                if(uploadImages.IsSuccessStatusCode)
+                {
+                    Input.Avatar = urlImage;
+                    StateHasChanged();
+                    Snack.Add("Thay đổi ảnh thành công", Severity.Success);   
+                }
+                else
+                {
+                    Snack.Add("Có lỗi xãy ra", Severity.Error);
+                }
+            }
+        }
+        else
+        {
+            Snack.Add("Có lỗi xãy ra", Severity.Error);
+        }
+
+    }
+
+    private async Task SaveProfile()
+    {
+        var profile = new UpdateUserInformationRequest(
+            Input.PhoneNumber,
+            Input.Email,
+            Input.Address,
+            Input.FullName,
+            Input.Gender
+        );
+        var updateMessage = await Client.SendAsync(HttpMethod.PUT, ConstRequestUri.UserUpdateProfile,
+            profile, true);
+        if (updateMessage is null)
+        {
+            return;
+        }
+
+        if (updateMessage.IsSuccessStatusCode)
+        {
+            Snack.Add("Cập nhận thành công", Severity.Success);
+        }
+        else
+        {
+            var errors = await updateMessage.Content.DecodeAsync<ErrorResponse>();
+            Snack.Add(errors is null ? "Cập nhật thất bại" :errors.Detail, Severity.Warning);
+        }
+        
+    }
+
+    private sealed class InputModel
+    {
+        [Required(ErrorMessage = "Vui lòng nhập số điện thoại")]
+        [RegularExpression("^(0?)(3[2-9]|5[6|8|9]|7[0|6-9]|8[0-6|8|9]|9[0-4|6-9])[0-9]{7}$", ErrorMessage = "Số điện thoại không đúng định dạng")]
+        [DataType(DataType.PhoneNumber, ErrorMessage = "Số điện thoại không đúng định dạng")]
+        public string PhoneNumber { get; set; } = null!;
+        [RegularExpression(@"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$", ErrorMessage = "Email không đúng định dạng")]
+        public string? Email { get; set; }
+        [Required(ErrorMessage = "Nhập địa chỉ")]
+        public string? Address { get; set; }
+        [Required(ErrorMessage = "Vui lòng nhập Họ tên")]
+        public string FullName { get; set; } = null!;
+        public bool Gender { get; set; }
+        public string? Avatar { get; set; }
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            var informationHttpMessage = await Client.SendAsync(HttpMethod.GET,
+                ConstRequestUri.UserInformation, null, true);
+            if (informationHttpMessage is null)
+            {
+                return;
+            }
+
+            if (informationHttpMessage.IsSuccessStatusCode)
+            {
+                var user = await informationHttpMessage.Content.DecodeAsync<UserDetailResponse>();
+                if (user is null)
+                {
+                    Snack.Add("Có lỗi xãy ra", Severity.Error);
+                    Navigation.NavigateTo("/admin");
+                    return;
+                }
+
+                Input = new InputModel
+                {
+                    Address = user.Address,
+                    Avatar = user.Avatar,
+                    Email = user.Email,
+                    FullName = user.FullName,
+                    PhoneNumber = user.Phone,
+                    Gender = user.Gender,
+                };
+                _isReadyPage = true;
+                StateHasChanged();
+                return;
+            }
+
+            Snack.Add("Có lỗi xãy ra", Severity.Warning);
+            Navigation.NavigateTo("/admin");
+        }
+    }
+    
+
+}
+

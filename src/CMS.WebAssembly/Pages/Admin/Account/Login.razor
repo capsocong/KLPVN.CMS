@@ -1,0 +1,124 @@
+﻿@page "/login"
+@layout CMS.WebAssembly.Layout.Admin.AccountLayout
+@using System.ComponentModel.DataAnnotations
+@using System.Net
+@using System.Net.Http.Headers
+@using CMS.Shared.DTOs.Au.Request
+@using CMS.WEB.Common
+@using CMS.WebAssembly.Common
+@using KLPVN.Core.Helper
+@inject IHttpClientFactory Factory
+@using KLPVN.Core.Models
+
+<style>
+    .mud-main-content{
+        padding: 0px !important;
+        margin: 0px !important;
+    }
+
+    .limiter {
+        width: 100%;
+        margin: 0 auto;
+    }
+
+    .container-login100 {
+        width: 100%;
+        min-height: 100vh;
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        padding: 15px;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        position: relative;
+        z-index: 1;
+    }
+
+    .container-login100::before {
+        content: "";
+        display: block;
+        position: absolute;
+        z-index: -1;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        background-color: rgba(0,0,0,0.65);
+    }
+
+    .login100-form-title {
+        font-family: Ubuntu-Bold;
+        font-size: 28px;
+        color: #fff;
+        line-height: 1.2;
+        text-align: center;
+        text-transform: uppercase;
+        display: block;
+        padding-bottom: 30px;
+    }
+
+    .center-image {
+        display: block;
+        margin: 0 auto;
+    }
+
+    .login100-form {
+        width: 100%;
+        border-radius: 10px;
+        background-color: #fff;
+    }
+
+    .wrap-login100 {
+        width: 390px;
+        border-radius: 10px;
+        overflow: hidden;
+        background: transparent;
+    }
+</style>
+@if (!isPassPage)
+{
+    <p>Loading...</p>
+}
+else
+{
+    <div class="limiter">
+        <div class="container-login100">
+            <div class="wrap-login100">
+                <span class="login100-form-title p-b-41">
+                    Đăng nhập
+                </span>
+                <MudPaper Elevation="0" Class="login100-form pa-2 rounded-3">
+                    <div class="d-flex justify-content-center align-items-center mb-2" style="width: 100%; height: auto;">
+                        <MudImage Class="center-image" Style="width:20%; height: auto" Src="imgs/no-image-icon-6.png" Alt="Icon"/>
+                    </div>
+                    <MudText Typo="Typo.body2" Style="color: red">@errorMessage</MudText>
+                    <EditForm Model="Input">
+                        <DataAnnotationsValidator/>
+                        <MudTextField Class="my-5 mx-3" @bind-Value="@Input.UserName" For="@(() => Input.UserName)"
+                                      Label="Tên đăng nhập" MaxLength="50" Variant="Variant.Outlined" Margin="Margin.Dense"/>
+                        <MudTextField Class="mx-3" @bind-Value="@Input.Password" For="@(() => Input.Password)" Label="Mật khẩu"
+                                      MaxLength="50" InputType="@passType" Adornment="Adornment.End" AdornmentIcon="@passIcon"
+                                      OnAdornmentClick="ShowPass" Variant="Variant.Outlined" Margin="Margin.Dense" />
+                        <MudStack Justify="Justify.Center" AlignItems="AlignItems.Center" Style="padding-top: 20px">
+                            <MudButton OnClick="HandlerLoginAsync" Style="text-transform: none; border-radius:20px !important" ButtonType="ButtonType.Submit" Variant="Variant.Filled" Color="Color.Primary" Disabled="@isLoginButton">
+                                Đăng nhập
+                            </MudButton>
+                        </MudStack>
+                    </EditForm>
+                </MudPaper>
+            </div>
+        </div>
+    </div>
+}
+
+@code {
+    private string UserName { get; set; }
+    private string Password { get; set; }
+    private bool RememberMe { get; set; }
+}

@@ -1,0 +1,13 @@
+D:\WorkSpace\project\KLPVN.CMS\src\CMS.Shared\bin\Debug\net8.0\CMS.Shared.deps.json
+D:\WorkSpace\project\KLPVN.CMS\src\CMS.Shared\bin\Debug\net8.0\CMS.Shared.dll
+D:\WorkSpace\project\KLPVN.CMS\src\CMS.Shared\bin\Debug\net8.0\CMS.Shared.pdb
+D:\WorkSpace\project\KLPVN.CMS\src\CMS.Shared\obj\Debug\net8.0\CMS.Shared.csproj.AssemblyReference.cache
+D:\WorkSpace\project\KLPVN.CMS\src\CMS.Shared\obj\Debug\net8.0\CMS.Shared.GeneratedMSBuildEditorConfig.editorconfig
+D:\WorkSpace\project\KLPVN.CMS\src\CMS.Shared\obj\Debug\net8.0\CMS.Shared.AssemblyInfoInputs.cache
+D:\WorkSpace\project\KLPVN.CMS\src\CMS.Shared\obj\Debug\net8.0\CMS.Shared.AssemblyInfo.cs
+D:\WorkSpace\project\KLPVN.CMS\src\CMS.Shared\obj\Debug\net8.0\CMS.Shared.csproj.CoreCompileInputs.cache
+D:\WorkSpace\project\KLPVN.CMS\src\CMS.Shared\obj\Debug\net8.0\CMS.Shared.sourcelink.json
+D:\WorkSpace\project\KLPVN.CMS\src\CMS.Shared\obj\Debug\net8.0\CMS.Shared.dll
+D:\WorkSpace\project\KLPVN.CMS\src\CMS.Shared\obj\Debug\net8.0\refint\CMS.Shared.dll
+D:\WorkSpace\project\KLPVN.CMS\src\CMS.Shared\obj\Debug\net8.0\CMS.Shared.pdb
+D:\WorkSpace\project\KLPVN.CMS\src\CMS.Shared\obj\Debug\net8.0\ref\CMS.Shared.dll

@@ -1,0 +1,210 @@
+﻿@page "/quanlynhanvien"
+@using CMS.Shared.DTOs.User.Request
+@using CMS.Shared.DTOs.User.Response
+@using CMS.WEB.Common
+@using KLPVN.Core.Helper
+@using KLPVN.Core.Models
+@using Newtonsoft.Json
+@layout CMS.WebAssembly.Layout.Admin.AdminLayout
+
+@inject IDialogService DialogService
+
+<style>
+    .mud-grid-spacing-xs-6 > .mud-grid-item {
+        padding-top: 10px;
+    }
+
+    .mud-button-label {
+        text-transform: none;
+        justify-content: left;
+    }
+
+    .mud-grid-spacing-xs-2 {
+        margin-top: 0px;
+    }
+
+    .center-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+    }
+</style>
+
+<PageTitle>Danh sách nhân viên</PageTitle>
+
+<MudStack Row>
+    <MudStack Justify="Justify.FlexStart">
+        <MudTextField T="string" Margin="Margin.Dense" Variant="Variant.Outlined" Placeholder="Tìm kiếm" Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Filled.Search" />
+    </MudStack>
+    <MudSpacer/>
+    <MudStack Justify="Justify.FlexEnd">
+        <MudFab StartIcon="@Icons.Material.Filled.Add" Color="Color.Primary" Style="width:45px; height:45px" OnClick="OpenAddDialog"></MudFab>
+    </MudStack>
+</MudStack>
+<MudGrid Spacing="2" Class="pa-0">
+    @if (!_isLoadEmployees)
+    {
+        <p>Loadding...</p>
+    }
+    else
+    {
+        @foreach (var u in _userDescriptionResponses)
+        {
+            <MudItem xs="12" sm="6" lg="3" xl="3">
+                <MudCard Class="rounded-3 my-1" Style="border: 3px" Elevation="2">
+                    <MudStack Row>
+                        <div class="mud-button-root mud-icon-button mud-ripple mud-ripple-icon">
+                            <div style="width:24px; height:24px"></div>
+                        </div>
+                        <div class="center-container">
+                            <MudAvatar Style="width: 100px; height: 100px">
+                                <MudImage ObjectFit="ObjectFit.ScaleDown" Src="@u.Avatar" Alt="img"/>
+                            </MudAvatar>
+                        </div>
+                        <MudItem>
+                            <MudMenu Icon="@Icons.Material.Filled.MoreVert" AnchorOrigin="Origin.BottomCenter" TransformOrigin="Origin.TopCenter">
+                                @* <MudMenuItem Icon="@Icons.Material.Filled.Edit" OnClick="OpenEditDialog">
+                                <MudText>Sửa</MudText>
+                            </MudMenuItem>
+                            <MudMenuItem >
+                                <MudSwitch @bind-Value="isActive" Color="Color.Tertiary">
+                                    @if (isActive)
+                                    {
+                                        <span>Đang hoạt động</span>
+                                    }
+                                    else
+                                    {
+                                        <span>Không hoạt đô</span>
+                                    }
+                                </MudSwitch>
+                            </MudMenuItem> *@
+                                <MudButton StartIcon="@Icons.Material.Filled.Edit" OnClick="()=>OpenEditDialog(u)" Style="width:100%">Sửa</MudButton>
+                                <MudSwitch T = "bool" Value="u.IsActive" Color="Color.Tertiary" ValueChanged="() => HandlerUserActiveChange(u)">
+                                    @if (u.IsActive)
+                                    {
+                                        <span>Đang hoạt động</span>
+                                    }
+                                    else
+                                    {
+                                        <span>Không hoạt động</span>
+                                    }
+                                </MudSwitch>
+                                <MudButton StartIcon="@Icons.Material.Filled.Delete" OnClick="()=>DeleteUserDialog(u)" Style="width:100%">Xóa</MudButton>
+                            </MudMenu>
+                        </MudItem>
+                    </MudStack>
+                    <MudStack Justify="Justify.Center" AlignItems="AlignItems.Center" Style="gap: 0 !important">
+                        <MudText Typo="Typo.body1" Style="font-weight:bold">@u.FullName</MudText>
+                        @foreach (var r in u.Roles)
+                        {
+                            <MudText Typo="Typo.body2">@r.Name</MudText>
+                        }
+                    </MudStack>
+                </MudCard>
+            </MudItem>
+        }
+    }
+</MudGrid>
+
+@code {
+    public string active { get; set; }
+    private bool _isLoadEmployees = false;
+    private List<UserDescriptionResponse> _userDescriptionResponses;
+    protected override void OnInitialized()
+    {
+        
+    }
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await LoadUserAsync();
+        }
+    }
+
+    private async Task OpenAddDialog()
+    {
+        var options = new DialogOptions { CloseOnEscapeKey = true, CloseButton = true, FullWidth=true};
+
+        var dialog =  await DialogService.ShowAsync<AddDialog>("", options);
+        var result = await dialog.Result;
+        if (result is { Canceled: false})
+        {
+            await LoadUserAsync();
+        }
+    }
+
+    private async Task OpenEditDialog(UserDescriptionResponse user)
+    {
+        var options = new DialogOptions { CloseOnEscapeKey = true, CloseButton = true, FullWidth = true };
+        var parameters = new DialogParameters()
+        {
+            { "UserName", user.UserName },
+        };
+        
+        var dialog = await DialogService.ShowAsync<EditDialog>("", parameters, options);
+        var result = await dialog.Result;
+        if (result is {  Canceled: false, Data: UpdateUserInformationRequest userByUserName })
+        {
+            user.FullName = userByUserName.FullName;
+        }
+
+    }
+
+    private async Task HandlerUserActiveChange(UserDescriptionResponse user)
+    {
+        user.IsActive = !user.IsActive;
+        var userActiveMessage = await Client.SendAsync(HttpMethod.PUT, string.Format(ConstRequestUri.PutActiveUser, user.UserName), null, true);
+        if (userActiveMessage is null)
+        {
+            return;
+        }
+
+        if (userActiveMessage.IsSuccessStatusCode)
+        {
+            return;
+        }
+        var errors = await userActiveMessage.Content.DecodeAsync<ErrorResponse>();
+        Snack.Add(errors is not null ? errors.Detail : "Có lỗi xãy ra", Severity.Warning);
+
+        user.IsActive = !user.IsActive;
+    }
+
+    private async Task LoadUserAsync()
+    {
+        var employHttpMessage = await Client.SendAsync(HttpMethod.GET, ConstRequestUri.UserAll, null, true);
+        if (employHttpMessage is null)
+        {
+            return;
+        }
+
+        if (employHttpMessage.IsSuccessStatusCode)
+        {
+            _userDescriptionResponses = await employHttpMessage.Content.DecodeAsync<List<UserDescriptionResponse>>() ?? [];
+            _isLoadEmployees = true;
+            StateHasChanged();
+        }
+        else
+        {
+            var errors = await employHttpMessage.Content.DecodeAsync<ErrorResponse>();
+            Snack.Add(errors is null ? "Loadding thất bại" :errors.Detail, Severity.Warning);
+        }
+    }
+
+    private async Task DeleteUserDialog(UserDescriptionResponse user)
+    {
+        var options = new DialogOptions { CloseOnEscapeKey = true, CloseButton = true, FullWidth=true};
+        var parameters = new DialogParameters()
+        {
+            { "UserName", user.UserName },
+        };
+        
+        var dialog =  await DialogService.ShowAsync<DeleteDialog>("",parameters, options);
+        var result = await dialog.Result;
+        if (result is { Canceled: false})
+        {
+            _userDescriptionResponses.Remove(user);
+        }
+    }
+}

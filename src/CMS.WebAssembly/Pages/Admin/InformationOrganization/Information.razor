@@ -1,0 +1,174 @@
+﻿@page "/danhsachthongtintochuc"
+@using CMS.Shared.DTOs.InfromationOrgaization.Request
+@using CMS.Shared.DTOs.InfromationOrgaization.Response
+@using CMS.WEB.Common
+@using CMS.WebAssembly.Pages.Admin.Employees
+@using KLPVN.Core.Helper
+@using KLPVN.Core.Models
+@layout CMS.WebAssembly.Layout.Admin.AdminLayout
+@inject IDialogService DialogService
+
+<PageTitle>Thông tin tổ chức</PageTitle>
+
+<MudTable @ref=@_table RowsPerPage="10" Items="DSThongtin" Dense="true" Virtualize="false" FixedHeader="true" Bordered="true" HorizontalScrollbar="true">
+    <ToolBarContent>
+        <MudTextField T="string" Placeholder="Tìm kiếm" Adornment="Adornment.Start"
+                      AdornmentIcon="@Icons.Material.Filled.Search"
+                      Variant="Variant.Outlined" Margin="Margin.Dense"
+                      Immediate="true"></MudTextField>
+        <MudSpacer />
+        <MudTooltip Text="Tạo bài viết" Arrow Placement="Placement.End">
+            <MudFab OnClick="OpenAddDialog" StartIcon="@Icons.Material.Filled.Add" Color="Color.Primary" Style="width:45px; height:45px"></MudFab>
+        </MudTooltip>
+    </ToolBarContent>
+    <HeaderContent>
+        <MudTh>Icon</MudTh>
+        <MudTd>Mã</MudTd>
+        <MudTh>Tên tổ chức</MudTh>
+        <MudTh>Số điện thoại</MudTh>
+        <MudTh>Email</MudTh>
+        <MudTh>Địa chỉ</MudTh>
+        <MudTh>Facebook</MudTh>
+        <MudTh>Youtube</MudTh>
+        <MudTh>X?</MudTh>
+        <MudTh>Mạng xã hội?</MudTh>
+        <MudTh>Tiktok</MudTh>
+        <MudTh><MudTableSortLabel SortBy="new Func<InformationOrganizationResponse, object>(x=>x.IsActive)">Trạng thái</MudTableSortLabel></MudTh>
+        <MudTh></MudTh>
+    </HeaderContent>
+    <RowTemplate>
+        @if (!_isLoadPage)
+        {
+            <p>Loading...</p>
+        }
+        else{
+            <MudTd>
+                <MudImage Style="width: 100%; max-width: 3rem" Src="@context.Icon" Alt="img"></MudImage>
+            </MudTd>
+            <MudTd>@context.Code</MudTd>
+            <MudTd>@context.OrganizationName</MudTd>
+            <MudTd>@context.Phone</MudTd>
+            <MudTd>@context.Email</MudTd>
+            <MudTd>@context.Address</MudTd>
+            <MudTd>@context.RefFacebook</MudTd>
+            <MudTd>@context.RefYoutube</MudTd>
+            <MudTd>@context.RefX</MudTd>
+            <MudTd>@context.RefSocial</MudTd>
+            <MudTd>@context.RefTikTok</MudTd>
+            <MudTd>
+                @if (context.IsActive)
+                {
+                    <MudChip Size="Size.Small" Variant="Variant.Text" Style="margin: 0px" T="string" Color="Color.Success">Đang hoạt động</MudChip>
+                }
+                else
+                {
+                    <MudChip Size="Size.Small" Variant="Variant.Text" Style="margin: 0px" T="string" Color="Color.Error">Không hoạt động</MudChip>
+                }
+            </MudTd>
+            <MudTd>
+                <MudStack Row>
+                    <MudTooltip Text="Sửa" Arrow Placement="Placement.Top">
+                        <MudIconButton OnClick="()=>OpenEditDialog(context)" Size="Size.Small" Icon="@Icons.Material.Filled.Edit"></MudIconButton>
+                    </MudTooltip>
+                    <MudTooltip Text="Xóa" Arrow Placement="Placement.Top">
+                        <MudIconButton OnClick="()=>OpenDeleteDialog(context)" Size="Size.Small" Icon="@Icons.Material.Filled.Delete" Color="Color.Error"></MudIconButton>
+                    </MudTooltip>
+                </MudStack>
+            </MudTd>
+        }
+    </RowTemplate>
+
+    <PagerContent>
+        <MudPagination SelectedChanged="PageChanged" Count="@((_table.GetFilteredItemsCount() + _table.RowsPerPage - 1) / _table.RowsPerPage)" Class="pa-4" />
+    </PagerContent>
+</MudTable>
+
+@code {
+    private MudForm form;
+    private bool _isLoadPage = false;
+    public List<InformationOrganizationResponse> DSThongtin { get; set; } = new();
+
+    private MudTable<InformationOrganizationResponse> _table;
+
+    private void PageChanged(int i)
+    {
+        _table.NavigateTo(i - 1);
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await LoadDataAsync();
+        }
+    }
+
+    private async Task OpenAddDialog()
+    {
+        var options = new DialogOptions { CloseOnEscapeKey = true, CloseButton = true, FullWidth = true };
+
+        var dialog = await DialogService.ShowAsync<AddDialog>("", options);
+        var result = await dialog.Result;
+        if(result is {Canceled:false})
+        {
+            await LoadDataAsync();
+        }
+    }
+
+    private async Task OpenEditDialog(InformationOrganizationResponse response)
+    {
+        var options = new DialogOptions { CloseOnEscapeKey = true, CloseButton = true, FullWidth = true };
+        var parameters = new DialogParameters()
+        {
+            {"InformationOr", response }
+        };
+        var dialog = await DialogService.ShowAsync<EditDialog>("",parameters, options);
+        var result = await dialog.Result;
+        if (result is { Canceled: false })
+        {
+            await LoadDataAsync();
+        }
+    }
+
+    private async Task OpenDeleteDialog(InformationOrganizationResponse informationOr)
+    {
+        var options = new DialogOptions { CloseOnEscapeKey = true, CloseButton = true, FullWidth = true };
+        var parameters = new DialogParameters()
+        {
+            { "Id", informationOr.Id }
+        };
+        var dialog = await DialogService.ShowAsync<DeleteDialog>("", parameters, options);
+        var result = await dialog.Result;
+        if (result is { Canceled: false })
+        {
+            DSThongtin.Remove(informationOr);
+        }
+    }
+
+    private async Task LoadDataAsync()
+    {
+        var informationOrMessage = await Client.SendAsync(HttpMethod.GET,
+            ConstRequestUri.GetAllInformationOrganization, null, true);
+        if (informationOrMessage is null)
+        {
+            return;
+        }
+
+        if (informationOrMessage.IsSuccessStatusCode)
+        {
+            var dsToChuc = await informationOrMessage.Content.DecodeAsync<List<InformationOrganizationResponse>>();
+            if (dsToChuc is null)
+            {
+                Snack.Add("Có lỗi xãy ra", Severity.Error);
+                return;
+            }
+                
+            DSThongtin = dsToChuc;
+            _isLoadPage = true;
+            StateHasChanged();
+            return;
+        }
+        var errors = await informationOrMessage.Content.DecodeAsync<ErrorResponse>();
+        Snack.Add(errors is null ? "Có lỗi xãy ra" :errors.Detail, Severity.Warning);
+    }
+}

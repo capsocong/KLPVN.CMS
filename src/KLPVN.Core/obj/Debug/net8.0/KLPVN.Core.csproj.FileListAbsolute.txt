@@ -1,0 +1,13 @@
+D:\WorkSpace\project\KLPVN.CMS\src\KLPVN.Core\bin\Debug\net8.0\KLPVN.Core.deps.json
+D:\WorkSpace\project\KLPVN.CMS\src\KLPVN.Core\bin\Debug\net8.0\KLPVN.Core.dll
+D:\WorkSpace\project\KLPVN.CMS\src\KLPVN.Core\bin\Debug\net8.0\KLPVN.Core.pdb
+D:\WorkSpace\project\KLPVN.CMS\src\KLPVN.Core\obj\Debug\net8.0\KLPVN.Core.csproj.AssemblyReference.cache
+D:\WorkSpace\project\KLPVN.CMS\src\KLPVN.Core\obj\Debug\net8.0\KLPVN.Core.GeneratedMSBuildEditorConfig.editorconfig
+D:\WorkSpace\project\KLPVN.CMS\src\KLPVN.Core\obj\Debug\net8.0\KLPVN.Core.AssemblyInfoInputs.cache
+D:\WorkSpace\project\KLPVN.CMS\src\KLPVN.Core\obj\Debug\net8.0\KLPVN.Core.AssemblyInfo.cs
+D:\WorkSpace\project\KLPVN.CMS\src\KLPVN.Core\obj\Debug\net8.0\KLPVN.Core.csproj.CoreCompileInputs.cache
+D:\WorkSpace\project\KLPVN.CMS\src\KLPVN.Core\obj\Debug\net8.0\KLPVN.Core.sourcelink.json
+D:\WorkSpace\project\KLPVN.CMS\src\KLPVN.Core\obj\Debug\net8.0\KLPVN.Core.dll
+D:\WorkSpace\project\KLPVN.CMS\src\KLPVN.Core\obj\Debug\net8.0\refint\KLPVN.Core.dll
+D:\WorkSpace\project\KLPVN.CMS\src\KLPVN.Core\obj\Debug\net8.0\KLPVN.Core.pdb
+D:\WorkSpace\project\KLPVN.CMS\src\KLPVN.Core\obj\Debug\net8.0\ref\KLPVN.Core.dll

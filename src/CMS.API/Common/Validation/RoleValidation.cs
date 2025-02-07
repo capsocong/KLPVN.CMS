@@ -1,0 +1,53 @@
+﻿using CMS.API.Common.Message;
+using CMS.API.Exceptions;
+using CMS.Shared.DTOs.Role.Request;
+
+namespace CMS.API.Common.Validation;
+
+public static class RoleValidation
+{
+  public static void IsValid(this CreateRoleRequest request)
+  {
+    if (string.IsNullOrWhiteSpace(request.Code))
+    {
+      throw new BadRequestException(ConstMessage.CODE_IS_EMPTY);
+    }
+
+    if (string.IsNullOrWhiteSpace(request.Name))
+    {
+      throw new BadRequestException(ConstMessage.NAME_IS_EMPTY);
+    }
+
+    if (request.Code.Length > 50)
+    {
+      throw new BadRequestException(ConstMessage.CODE_LENGTH_MAX_50);
+    }
+
+    if (request.Name.Length > 50)
+    {
+      throw new BadRequestException(ConstMessage.NAME_LENGTH_MAX_50);
+    }
+  }
+  public static void IsValid(this UpdateRoleRequest request)
+  {
+    if (string.IsNullOrWhiteSpace(request.Code))
+    {
+      throw new BadRequestException(ConstMessage.CODE_IS_EMPTY);
+    }
+
+    if (string.IsNullOrWhiteSpace(request.Name))
+    {
+      throw new BadRequestException(ConstMessage.NAME_IS_EMPTY);
+    }
+
+    if (request.Code.Length > 50)
+    {
+      throw new BadRequestException(ConstMessage.CODE_LENGTH_MAX_50);
+    }
+
+    if (request.Name.Length > 50)
+    {
+      throw new BadRequestException(ConstMessage.NAME_LENGTH_MAX_50);
+    }
+  }
+}

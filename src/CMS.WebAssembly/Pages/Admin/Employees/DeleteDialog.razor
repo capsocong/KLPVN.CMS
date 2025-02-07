@@ -1,0 +1,51 @@
+﻿@using CMS.WEB.Common
+@using KLPVN.Core.Helper
+@using KLPVN.Core.Models
+<style>
+    .mud-button-label {
+        text-transform: none;
+    }
+</style>
+
+<MudDialog>
+    <TitleContent>
+        <MudStack Row AlignItems="AlignItems.Center" Justify="Justify.FlexStart" Spacing="1" Class="pl-0 pr-4 pt-1">
+            <MudText Color="Color.Default" Style="font-weight: bold" Typo="Typo.h6">Xóa Nhân Viên</MudText>
+        </MudStack>
+    </TitleContent>
+    <DialogContent>
+        Bạn muốn xóa nhân viên này?
+    </DialogContent>
+    <DialogActions>
+        <MudButton OnClick="Cancel" Variant="Variant.Filled">Hủy</MudButton>
+        <MudButton Color="Color.Error" OnClick="Submit" Variant="Variant.Filled">Xóa</MudButton>
+    </DialogActions>
+</MudDialog>
+
+@code {
+    [Parameter]
+    public string UserName { get; set; }
+    [CascadingParameter]
+    private MudDialogInstance MudDialog { get; set; }
+
+    private async Task Submit()
+    {
+        var deleteUserMessage = await Client.SendAsync(
+            HttpMethod.DELETE, string.Format(ConstRequestUri.DeleteUser, UserName), null, true);
+        if (deleteUserMessage is null)
+        {
+            return;
+        }
+
+        if (deleteUserMessage.IsSuccessStatusCode)
+        {
+            Snack.Add("Xóa thành công", Severity.Success);
+            MudDialog.Close(DialogResult.Ok(0));
+            return;
+        }
+        var error = await deleteUserMessage.Content.DecodeAsync<ErrorResponse>();
+        Snack.Add(error is not null ? error.Detail : "Có lỗi xãy ra", Severity.Warning);
+    }
+
+    private void Cancel() => MudDialog.Cancel();
+}

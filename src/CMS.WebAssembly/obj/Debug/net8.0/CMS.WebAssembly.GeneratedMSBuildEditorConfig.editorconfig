@@ -1,0 +1,248 @@
+is_global = true
+build_property.EnableAotAnalyzer = 
+build_property.EnableSingleFileAnalyzer = 
+build_property.EnableTrimAnalyzer = false
+build_property.IncludeAllContentForSelfExtract = 
+build_property.MudDebugAnalyzer = 
+build_property.MudAllowedAttributePattern = 
+build_property.MudIllegalParameters = 
+build_property.TargetFramework = net8.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = 
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = false
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = browser
+build_property.RootNamespace = CMS.WebAssembly
+build_property.RootNamespace = CMS.WebAssembly
+build_property.ProjectDir = D:\WorkSpace\project\KLPVN.CMS\src\CMS.WebAssembly\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = false
+build_property.RazorLangVersion = 8.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = D:\WorkSpace\project\KLPVN.CMS\src\CMS.WebAssembly
+build_property._RazorSourceGeneratorDebug = 
+build_property.EffectiveAnalysisLevelStyle = 8.0
+build_property.EnableCodeStyleSeverity = 
+
+[D:/WorkSpace/project/KLPVN.CMS/src/CMS.WebAssembly/Pages/Admin/Account/ChangePassword.razor]
+build_metadata.AdditionalFiles.TargetPath = 
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cQWNjb3VudFxDaGFuZ2VQYXNzd29yZC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/WorkSpace/project/KLPVN.CMS/src/CMS.WebAssembly/Pages/Admin/Account/Login.razor]
+build_metadata.AdditionalFiles.TargetPath = 
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cQWNjb3VudFxMb2dpbi5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/WorkSpace/project/KLPVN.CMS/src/CMS.WebAssembly/Pages/Admin/ArticleTopic/AddDialog.razor]
+build_metadata.AdditionalFiles.TargetPath = 
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cQXJ0aWNsZVRvcGljXEFkZERpYWxvZy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/WorkSpace/project/KLPVN.CMS/src/CMS.WebAssembly/Pages/Admin/ArticleTopic/DeleteDialog.razor]
+build_metadata.AdditionalFiles.TargetPath = 
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cQXJ0aWNsZVRvcGljXERlbGV0ZURpYWxvZy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/WorkSpace/project/KLPVN.CMS/src/CMS.WebAssembly/Pages/Admin/ArticleTopic/EditDialog.razor]
+build_metadata.AdditionalFiles.TargetPath = 
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cQXJ0aWNsZVRvcGljXEVkaXREaWFsb2cucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/WorkSpace/project/KLPVN.CMS/src/CMS.WebAssembly/Pages/Admin/ArticleTopic/List.razor]
+build_metadata.AdditionalFiles.TargetPath = 
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cQXJ0aWNsZVRvcGljXExpc3QucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/WorkSpace/project/KLPVN.CMS/src/CMS.WebAssembly/Pages/Admin/Article/AddDialog.razor]
+build_metadata.AdditionalFiles.TargetPath = 
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cQXJ0aWNsZVxBZGREaWFsb2cucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/WorkSpace/project/KLPVN.CMS/src/CMS.WebAssembly/Pages/Admin/Article/DeleteDialog.razor]
+build_metadata.AdditionalFiles.TargetPath = 
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cQXJ0aWNsZVxEZWxldGVEaWFsb2cucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/WorkSpace/project/KLPVN.CMS/src/CMS.WebAssembly/Pages/Admin/Article/EmployeeEdit.razor]
+build_metadata.AdditionalFiles.TargetPath = 
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cQXJ0aWNsZVxFbXBsb3llZUVkaXQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/WorkSpace/project/KLPVN.CMS/src/CMS.WebAssembly/Pages/Admin/Article/List.razor]
+build_metadata.AdditionalFiles.TargetPath = 
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cQXJ0aWNsZVxMaXN0LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/WorkSpace/project/KLPVN.CMS/src/CMS.WebAssembly/Pages/Admin/Employees/AddDialog.razor]
+build_metadata.AdditionalFiles.TargetPath = 
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cRW1wbG95ZWVzXEFkZERpYWxvZy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/WorkSpace/project/KLPVN.CMS/src/CMS.WebAssembly/Pages/Admin/Employees/DeleteDialog.razor]
+build_metadata.AdditionalFiles.TargetPath = 
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cRW1wbG95ZWVzXERlbGV0ZURpYWxvZy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/WorkSpace/project/KLPVN.CMS/src/CMS.WebAssembly/Pages/Admin/Employees/EditDialog.razor]
+build_metadata.AdditionalFiles.TargetPath = 
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cRW1wbG95ZWVzXEVkaXREaWFsb2cucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/WorkSpace/project/KLPVN.CMS/src/CMS.WebAssembly/Pages/Admin/Employees/List.razor]
+build_metadata.AdditionalFiles.TargetPath = 
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cRW1wbG95ZWVzXExpc3QucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/WorkSpace/project/KLPVN.CMS/src/CMS.WebAssembly/App.razor]
+build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/WorkSpace/project/KLPVN.CMS/src/CMS.WebAssembly/Components/Admin/MenuArticleTopic.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xBZG1pblxNZW51QXJ0aWNsZVRvcGljLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/WorkSpace/project/KLPVN.CMS/src/CMS.WebAssembly/Components/Admin/RecursiveRenderMenuTree.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xBZG1pblxSZWN1cnNpdmVSZW5kZXJNZW51VHJlZS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/WorkSpace/project/KLPVN.CMS/src/CMS.WebAssembly/Layout/Admin/AccountLayout.razor]
+build_metadata.AdditionalFiles.TargetPath = TGF5b3V0XEFkbWluXEFjY291bnRMYXlvdXQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/WorkSpace/project/KLPVN.CMS/src/CMS.WebAssembly/Layout/Admin/AdminLayout.razor]
+build_metadata.AdditionalFiles.TargetPath = TGF5b3V0XEFkbWluXEFkbWluTGF5b3V0LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/WorkSpace/project/KLPVN.CMS/src/CMS.WebAssembly/Layout/Admin/AdminNav.razor]
+build_metadata.AdditionalFiles.TargetPath = TGF5b3V0XEFkbWluXEFkbWluTmF2LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/WorkSpace/project/KLPVN.CMS/src/CMS.WebAssembly/Layout/ErrorLayout.razor]
+build_metadata.AdditionalFiles.TargetPath = TGF5b3V0XEVycm9yTGF5b3V0LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/WorkSpace/project/KLPVN.CMS/src/CMS.WebAssembly/Pages/Admin/Account/Info.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cQWNjb3VudFxJbmZvLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/WorkSpace/project/KLPVN.CMS/src/CMS.WebAssembly/Pages/Admin/AdminHome.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cQWRtaW5Ib21lLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/WorkSpace/project/KLPVN.CMS/src/CMS.WebAssembly/Pages/Admin/Article/AdminEdit.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cQXJ0aWNsZVxBZG1pbkVkaXQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/WorkSpace/project/KLPVN.CMS/src/CMS.WebAssembly/Pages/Admin/Article/AdminWaitingList.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cQXJ0aWNsZVxBZG1pbldhaXRpbmdMaXN0LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/WorkSpace/project/KLPVN.CMS/src/CMS.WebAssembly/Pages/Admin/Article/EmployeeDraftList.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cQXJ0aWNsZVxFbXBsb3llZURyYWZ0TGlzdC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/WorkSpace/project/KLPVN.CMS/src/CMS.WebAssembly/Pages/Admin/Article/EmployeeWaitingList.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cQXJ0aWNsZVxFbXBsb3llZVdhaXRpbmdMaXN0LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/WorkSpace/project/KLPVN.CMS/src/CMS.WebAssembly/Pages/Admin/Article/RejectedList.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cQXJ0aWNsZVxSZWplY3RlZExpc3QucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/WorkSpace/project/KLPVN.CMS/src/CMS.WebAssembly/Pages/Admin/Feedback/List.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cRmVlZGJhY2tcTGlzdC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/WorkSpace/project/KLPVN.CMS/src/CMS.WebAssembly/Pages/Admin/InformationOrganization/AddDialog.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cSW5mb3JtYXRpb25Pcmdhbml6YXRpb25cQWRkRGlhbG9nLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/WorkSpace/project/KLPVN.CMS/src/CMS.WebAssembly/Pages/Admin/InformationOrganization/DeleteDialog.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cSW5mb3JtYXRpb25Pcmdhbml6YXRpb25cRGVsZXRlRGlhbG9nLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/WorkSpace/project/KLPVN.CMS/src/CMS.WebAssembly/Pages/Admin/InformationOrganization/EditDialog.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cSW5mb3JtYXRpb25Pcmdhbml6YXRpb25cRWRpdERpYWxvZy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/WorkSpace/project/KLPVN.CMS/src/CMS.WebAssembly/Pages/Admin/InformationOrganization/Information.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cSW5mb3JtYXRpb25Pcmdhbml6YXRpb25cSW5mb3JtYXRpb24ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/WorkSpace/project/KLPVN.CMS/src/CMS.WebAssembly/Pages/Admin/Role/AddDialog.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cUm9sZVxBZGREaWFsb2cucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/WorkSpace/project/KLPVN.CMS/src/CMS.WebAssembly/Pages/Admin/Role/DeleteDialog.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cUm9sZVxEZWxldGVEaWFsb2cucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/WorkSpace/project/KLPVN.CMS/src/CMS.WebAssembly/Pages/Admin/Role/EditDialog.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cUm9sZVxFZGl0RGlhbG9nLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/WorkSpace/project/KLPVN.CMS/src/CMS.WebAssembly/Pages/Admin/Role/GanQuyenDialog.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cUm9sZVxHYW5RdXllbkRpYWxvZy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/WorkSpace/project/KLPVN.CMS/src/CMS.WebAssembly/Pages/Admin/Role/List.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cUm9sZVxMaXN0LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/WorkSpace/project/KLPVN.CMS/src/CMS.WebAssembly/Pages/Counter.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ291bnRlci5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/WorkSpace/project/KLPVN.CMS/src/CMS.WebAssembly/Pages/Errors/403ErrorForbiddenPage.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXJyb3JzXDQwM0Vycm9yRm9yYmlkZGVuUGFnZS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/WorkSpace/project/KLPVN.CMS/src/CMS.WebAssembly/Pages/Errors/404ErrorNotFoundPage.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXJyb3JzXDQwNEVycm9yTm90Rm91bmRQYWdlLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/WorkSpace/project/KLPVN.CMS/src/CMS.WebAssembly/Pages/Errors/500ErrorInternalServer.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXJyb3JzXDUwMEVycm9ySW50ZXJuYWxTZXJ2ZXIucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/WorkSpace/project/KLPVN.CMS/src/CMS.WebAssembly/Pages/Errors/ErrorNoHaveInternet.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXJyb3JzXEVycm9yTm9IYXZlSW50ZXJuZXQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/WorkSpace/project/KLPVN.CMS/src/CMS.WebAssembly/Pages/Home.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSG9tZS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/WorkSpace/project/KLPVN.CMS/src/CMS.WebAssembly/Pages/Weather.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcV2VhdGhlci5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/WorkSpace/project/KLPVN.CMS/src/CMS.WebAssembly/_Imports.razor]
+build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/WorkSpace/project/KLPVN.CMS/src/CMS.WebAssembly/Layout/MainLayout.razor]
+build_metadata.AdditionalFiles.TargetPath = TGF5b3V0XE1haW5MYXlvdXQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-olq4e5f395
+
+[D:/WorkSpace/project/KLPVN.CMS/src/CMS.WebAssembly/Layout/NavMenu.razor]
+build_metadata.AdditionalFiles.TargetPath = TGF5b3V0XE5hdk1lbnUucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-17vba4ylee
